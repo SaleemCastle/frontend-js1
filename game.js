@@ -6,7 +6,11 @@ function computerPlay() {
 }
 
 function playRound(userChoice, computerChoice) {
-	userChoice = userChoice.trim().toLowerCase(); 
+    if (userChoice) {
+        userChoice = userChoice.trim().toLowerCase(); 
+    } else {
+        return
+    }
 	
 	if (
 		(userChoice === "rock" && computerChoice === "Scissors") ||
@@ -35,7 +39,7 @@ function getUserChoice(round) {
             const leaveGame = confirm("Are you sure you want to leave the game?");
             if (leaveGame) {
               alert("Thanks for playing! See you next time.");
-              return null;
+              return;
             }
             continue;
         }
@@ -60,13 +64,15 @@ function game() {
 		const computerChoice = computerPlay();
 
 		const result = playRound(playerSelection, computerChoice);
-		console.log(result);
-
-		if (result.startsWith("You Win!")) {
-			playerScore++;
-		} else if (result.startsWith("You Lose!")) {
-			computerScore++;
-		}
+        if (result) {
+            if (result.startsWith("You Win!")) {
+                playerScore++;
+            } else if (result.startsWith("You Lose!")) {
+                computerScore++;
+            }
+        } else {
+            return
+        }
 	}
 
 	if (playerScore > computerScore) {
@@ -87,7 +93,7 @@ function startGame() {
           return game();
         } else if (userResponse !== null && userResponse.toLowerCase() === "no") {
             alert("Okay, maybe next time!");
-            return null
+            return;
         } else {
             alert("Please answer yes or no")
         }
