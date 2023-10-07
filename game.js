@@ -13,14 +13,17 @@ function playRound(playerSelection, computerSelection) {
 		(playerSelection === "paper" && computerSelection === "Rock") ||
 		(playerSelection === "scissors" && computerSelection === "Paper")
 	) {
+		playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.substring(1);
 		return `You Win! ${playerSelection} beats ${computerSelection}`;
 	} else if (
 		(playerSelection === "rock" && computerSelection === "Paper") ||
 		(playerSelection === "paper" && computerSelection === "Scissors") ||
 		(playerSelection === "scissors" && computerSelection === "Rock")
 	) {
+		playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.substring(1);
 		return `You Lose! ${computerSelection} beats ${playerSelection}`;
 	} else {
+		playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.substring(1);
 		return "It's a Tie! Both chose " + playerSelection;
 	}
 }
