@@ -78,16 +78,20 @@ function game() {
 	}
 }
 
-// Function to start the game
 function startGame() {
-    const startPrompt = "Do you want to start a game of Rock, Paper, Scissors? (Yes/No)";
-    const userResponse = prompt(startPrompt);
-  
-    if (userResponse !== null && userResponse.toLowerCase() === "yes") {
-      game();
-    } else {
-      alert("Okay, maybe next time!");
+    while (true) {
+        const startPrompt = "Do you want to start a game of Rock, Paper, Scissors? (Yes/No)";
+        const userResponse = prompt(startPrompt);
+        
+        if (userResponse !== null && userResponse.toLowerCase() === "yes") {
+          return game();
+        } else if (userResponse !== null && userResponse.toLowerCase() === "no") {
+            alert("Okay, maybe next time!");
+            return null
+        } else {
+            alert("Please answer yes or no")
+        }
     }
-  }
+}
 
 startGame();
